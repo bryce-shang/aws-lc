@@ -34,7 +34,7 @@ batch:
         compute-type: BUILD_GENERAL1_LARGE
         image: 654358955777.dkr.ecr.us-west-2.amazonaws.com/aws-lc-test-docker-images-linux-aarch:ubuntu-19.10_gcc-9x_latest
 
-    # windows
+    # windows 
     - identifier: UbuntuWindows2015
       buildspec: ./tests/ci/codebuild/windows-msvc2015-x64.yml
       env:
