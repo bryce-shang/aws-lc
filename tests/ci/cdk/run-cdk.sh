@@ -25,9 +25,9 @@ shift
 
 # Export other environment variables.
 export DATE_NOW="$(date +%Y-%m-%d-%H-%M)"
-export ECR_LINUX_AARCH_REPO_NAME="aws-lc-test-docker-images-linux-aarch"
-export ECR_LINUX_X86_REPO_NAME="aws-lc-test-docker-images-linux-x86"
-export ECR_WINDOWS_REPO_NAME="aws-lc-test-docker-images-windows"
+export ECR_LINUX_AARCH_REPO_NAME="aws-lc-docker-images-linux-aarch"
+export ECR_LINUX_X86_REPO_NAME="aws-lc-docker-images-linux-x86"
+export ECR_WINDOWS_REPO_NAME="aws-lc-docker-images-windows"
 export S3_FOR_WIN_DOCKER_IMG_BUILD="windows-docker-images-${DATE_NOW}"
 export WIN_EC2_TAG_KEY="aws-lc"
 export WIN_EC2_TAG_VALUE="windows-docker-img-${DATE_NOW}"
@@ -35,12 +35,11 @@ export WIN_DOCKER_BUILD_SSM_DOCUMENT="windows-ssm-document-${DATE_NOW}"
 
 # Functions
 function create_aws_resources() {
-  cdk deploy aws-lc-test-* --require-approval never
+  cdk deploy aws-lc-* --require-approval never
 }
 
 function build_linux_img() {
-  aws codebuild start-build --project-name ${ECR_LINUX_AARCH_REPO_NAME}
-  aws codebuild start-build --project-name ${ECR_LINUX_X86_REPO_NAME}
+  aws codebuild start-build-batch --project-name aws-lc-docker-image-build-linux
 }
 
 function build_windows_img() {
@@ -81,7 +80,7 @@ function build_windows_img() {
 
 function destroy_docker_img_build_stack() {
   # Destroy all temporary resources created for all docker image build.
-  cdk destroy aws-lc-test-docker-images-build-* --force
+  cdk destroy aws-lc-docker-image-build-* --force
 }
 
 function images_pushed_to_ecr() {
@@ -149,7 +148,7 @@ function deploy() {
 }
 
 function destroy() {
-  cdk destroy aws-lc-test-* --force
+  cdk destroy aws-lc-* --force
 }
 
 # Main logics
