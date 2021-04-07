@@ -21,7 +21,7 @@ package main
 type Asm Peg {}
 
 AsmFile <- Statement* !.
-Statement <- WS? (Label / ((GlobalDirective /
+Statement <- WS? (Label / ("add sp,sp,#32*(12-4)" '\n') / ((GlobalDirective /
                             LocationDirective /
                             LabelContainingDirective /
                             Instruction /
@@ -59,7 +59,7 @@ LocalLabel <- [0-9][0-9$]*
 LocalLabelRef <- [0-9][0-9$]*[bf]
 Instruction <- InstructionName (WS InstructionArg ((WS? ',' WS?) InstructionArg)*)?
 InstructionName <- [[A-Z]][[A-Z.0-9]]* [.+\-]?
-InstructionArg <- IndirectionIndicator? (ARMConstantTweak / RegisterOrConstant / LocalLabelRef / TOCRefHigh / TOCRefLow / GOTLocation / GOTSymbolOffset / MemoryRef) AVX512Token*
+InstructionArg <- IndirectionIndicator? (ARMConstantTweak / RegisterOrConstant / LocalLabelRef / TOCRefHigh / TOCRefLow / GOTLocation / GOTSymbolOffset / MemoryRef / "sp,sp,#32*(12-4)") AVX512Token*
 GOTLocation <- '$_GLOBAL_OFFSET_TABLE_-' LocalSymbol
 GOTSymbolOffset <- ('$' SymbolName '@GOT' 'OFF'?) / (":got:" SymbolName)
 AVX512Token <- WS? '{' '%'? [0-9a-z]* '}'
@@ -86,10 +86,14 @@ MemoryRef <- (SymbolRef BaseIndexScale /
               SegmentRegister BaseIndexScale /
               SegmentRegister Offset /
               ARMBaseIndexScale /
+              ARMBaseIndexScale898 /
               BaseIndexScale)
 SymbolRef <- (Offset* '+')? (LocalSymbol / SymbolName) Offset* ('@' Section Offset*)?
 Low12BitsSymbolRef <- ":lo12:" (LocalSymbol / SymbolName) Offset?
-ARMBaseIndexScale <- '[' ARMRegister (',' WS? (('#' Offset ('*' [0-9]+)? ) / ARMGOTLow12 / Low12BitsSymbolRef / ARMRegister) (',' WS? ARMConstantTweak)?)? ']' ARMPostincrement?
+ARMBaseIndexScale <- '[' ARMRegister (',' WS? (('#' Offset (('*' [0-9]+) / ('*' Offset331) / Offset666*)? ) / ARMGOTLow12 / Low12BitsSymbolRef / ARMRegister) (',' WS? ARMConstantTweak)?)? ']' ARMPostincrement?
+ARMBaseIndexScale898 <- "dsafasfdasfads"
+Offset331 <- '(' [0-9]+ Operator [0-9]+ ')'
+Offset666 <- '+' [0-9]+
 ARMGOTLow12 <- ":got_lo12:" SymbolName
 ARMPostincrement <- '!'
 BaseIndexScale <- '(' RegisterOrConstant? WS? (',' WS? RegisterOrConstant WS? (',' [0-9]+)? )? ')'
