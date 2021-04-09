@@ -11,7 +11,7 @@ source tests/ci/common_posix_setup.sh
 
 #echo "Testing AWS-LC in FIPS release mode."
 fips_build_and_test -DCMAKE_BUILD_TYPE=Release
-#
+
 #echo "Testing shared AWS-LC in FIPS debug mode."
 #fips_build_and_test -DBUILD_SHARED_LIBS=1
 #
