@@ -51,6 +51,7 @@
  * Hudson (tjh@cryptsoft.com). */
 
 #include <openssl/ecdsa.h>
+#include <stdio.h>
 
 #include <vector>
 
@@ -65,6 +66,7 @@
 #include <openssl/rand.h>
 
 #include "../ec/internal.h"
+#include "internal.h"
 #include "../../test/file_test.h"
 #include "../../test/test_util.h"
 
@@ -415,6 +417,95 @@ TEST(ECDSATest, VerifyTestVectors) {
           ECDSA_do_verify(digest.data(), digest.size(), sig.get(), key.get()));
     }
   });
+}
+
+static EC_KEY *self_test_ecdsa_key(void) {
+  static const uint8_t kQx[] = {
+      0xc8, 0x15, 0x61, 0xec, 0xf2, 0xe5, 0x4e, 0xde, 0xfe, 0x66, 0x17,
+      0xdb, 0x1c, 0x7a, 0x34, 0xa7, 0x07, 0x44, 0xdd, 0xb2, 0x61, 0xf2,
+      0x69, 0xb8, 0x3d, 0xac, 0xfc, 0xd2, 0xad, 0xe5, 0xa6, 0x81,
+  };
+  static const uint8_t kQy[] = {
+      0xe0, 0xe2, 0xaf, 0xa3, 0xf9, 0xb6, 0xab, 0xe4, 0xc6, 0x98, 0xef,
+      0x64, 0x95, 0xf1, 0xbe, 0x49, 0xa3, 0x19, 0x6c, 0x50, 0x56, 0xac,
+      0xb3, 0x76, 0x3f, 0xe4, 0x50, 0x7e, 0xec, 0x59, 0x6e, 0x88,
+  };
+  static const uint8_t kD[] = {
+      0xc6, 0xc1, 0xaa, 0xda, 0x15, 0xb0, 0x76, 0x61, 0xf8, 0x14, 0x2c,
+      0x6c, 0xaf, 0x0f, 0xdb, 0x24, 0x1a, 0xff, 0x2e, 0xfe, 0x46, 0xc0,
+      0x93, 0x8b, 0x74, 0xf2, 0xbc, 0xc5, 0x30, 0x52, 0xb0, 0x77,
+  };
+
+  EC_KEY *ec_key = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
+  BIGNUM *qx = BN_bin2bn(kQx, sizeof(kQx), NULL);
+  BIGNUM *qy = BN_bin2bn(kQy, sizeof(kQy), NULL);
+  BIGNUM *d = BN_bin2bn(kD, sizeof(kD), NULL);
+  if (ec_key == NULL || qx == NULL || qy == NULL || d == NULL ||
+      !EC_KEY_set_public_key_affine_coordinates(ec_key, qx, qy) ||
+      !EC_KEY_set_private_key(ec_key, d)) {
+    EC_KEY_free(ec_key);
+    ec_key = NULL;
+  }
+
+  BN_free(qx);
+  BN_free(qy);
+  BN_free(d);
+  return ec_key;
+}
+
+static const uint8_t kPlaintextSHA256[32] = {
+      0x37, 0xbd, 0x70, 0x53, 0x72, 0xfc, 0xd4, 0x03, 0x79, 0x70, 0xfb,
+      0x06, 0x95, 0xb1, 0x2a, 0x82, 0x48, 0xe1, 0x3e, 0xf2, 0x33, 0xfb,
+      0xef, 0x29, 0x81, 0x22, 0x45, 0x40, 0x43, 0x70, 0xce, 0x0f
+  };
+
+const uint8_t kECDSASigR[32] = {
+      0x67, 0x80, 0xc5, 0xfc, 0x70, 0x27, 0x5e, 0x2c, 0x70, 0x61, 0xa0,
+      0xe7, 0x87, 0x7b, 0xb1, 0x74, 0xde, 0xad, 0xeb, 0x98, 0x87, 0x02,
+      0x7f, 0x3f, 0xa8, 0x36, 0x54, 0x15, 0x8b, 0xa7, 0xf5, 0x0c
+  };
+  const uint8_t kECDSASigS[32] = {
+      0xa5, 0x93, 0xe0, 0x23, 0x91, 0xe7, 0x4b, 0x8d, 0x77, 0x25, 0xa6,
+      0xba, 0x4d, 0xd9, 0x86, 0x77, 0xda, 0x7d, 0x8f, 0xef, 0xc4, 0x1a,
+      0xf0, 0xcc, 0x81, 0xe5, 0xea, 0x3f, 0xc2, 0x41, 0x7f, 0xd8,
+  };
+
+static int check_test(const void *expected, const void *actual,
+                      size_t expected_len, const char *name) {
+  if (OPENSSL_memcmp(actual, expected, expected_len) != 0) {
+    fprintf(stderr, "%s failed.\nExpected: ", name);
+    fprintf(stderr, "\nCalculated: ");
+    fprintf(stderr, "\n");
+    fflush(stderr);
+    return 0;
+  }
+  return 1;
+}
+
+TEST(ZZECDSATest, VerifyKAT) {
+  fprintf(stderr, "ECDSATest.VerifyKAT\n");
+  EC_KEY *ec_key = self_test_ecdsa_key();
+  // The 'k' value for ECDSA is fixed to avoid an entropy draw.
+  uint8_t ecdsa_k[32] = {0};
+  ecdsa_k[31] = 42;
+
+  ECDSA_SIG *sig = ecdsa_sign_with_nonce_for_known_answer_test(
+      kPlaintextSHA256, sizeof(kPlaintextSHA256), ec_key, ecdsa_k,
+      sizeof(ecdsa_k));
+
+  uint8_t ecdsa_r_bytes[sizeof(kECDSASigR)];
+  uint8_t ecdsa_s_bytes[sizeof(kECDSASigS)];
+  bool checkcheck = (sig == NULL ||
+      BN_num_bytes(sig->r) != sizeof(ecdsa_r_bytes) ||
+      !BN_bn2bin(sig->r, ecdsa_r_bytes) ||
+      BN_num_bytes(sig->s) != sizeof(ecdsa_s_bytes) ||
+      !BN_bn2bin(sig->s, ecdsa_s_bytes) ||
+      !check_test(kECDSASigR, ecdsa_r_bytes, sizeof(kECDSASigR), "ECDSA R") ||
+      !check_test(kECDSASigS, ecdsa_s_bytes, sizeof(kECDSASigS), "ECDSA S"));
+  ASSERT_FALSE(checkcheck);
+
+  ASSERT_TRUE(ECDSA_do_verify(kPlaintextSHA256, sizeof(kPlaintextSHA256), sig, ec_key));
+  fprintf(stderr, "ECDSATest.VerifyKAT Done\n");
 }
 
 TEST(ECDSATest, SignTestVectors) {

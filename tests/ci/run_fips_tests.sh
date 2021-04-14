@@ -6,11 +6,16 @@ export CXX=clang++-7
 
 source tests/ci/common_posix_setup.sh
 
+#fips_build_and_test -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ALOHA=0
+#run_build -DCMAKE_BUILD_TYPE=Release
+#./test_build_dir/crypto/crypto_test --gtest_filter=ZZECDSATest.VerifyKAT
+
 #echo "Testing AWS-LC in FIPS debug mode."
 #fips_build_and_test
 
 #echo "Testing AWS-LC in FIPS release mode."
 fips_build_and_test -DCMAKE_BUILD_TYPE=Release
+./test_build_dir/crypto/crypto_test --gtest_filter=ZZECDSATest.VerifyKAT
 
 #echo "Testing shared AWS-LC in FIPS debug mode."
 #fips_build_and_test -DBUILD_SHARED_LIBS=1

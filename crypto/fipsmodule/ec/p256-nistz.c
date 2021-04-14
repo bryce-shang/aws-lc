@@ -444,7 +444,7 @@ static int ecp_nistz256_get_affine(const EC_GROUP *group,
   return 1;
 }
 
-static void ecp_nistz256_addz(const EC_GROUP *group, EC_RAW_POINT *r,
+static void ecp_nistz256_add(const EC_GROUP *group, EC_RAW_POINT *r,
                              const EC_RAW_POINT *a_, const EC_RAW_POINT *b_) {
   P256_POINT a, b;
   OPENSSL_memcpy(a.X, a_->X.words, P256_LIMBS * sizeof(BN_ULONG));
@@ -616,7 +616,7 @@ DEFINE_METHOD_FUNCTION(EC_METHOD, EC_GFp_nistz256_method) {
   out->group_finish = ec_GFp_mont_group_finish;
   out->group_set_curve = ec_GFp_mont_group_set_curve;
   out->point_get_affine_coordinates = ecp_nistz256_get_affine;
-  out->add = ecp_nistz256_addz;
+  out->add = ecp_nistz256_add;
   out->dbl = ecp_nistz256_dbl;
   out->mul = ecp_nistz256_point_mul;
   out->mul_base = ecp_nistz256_point_mul_base;

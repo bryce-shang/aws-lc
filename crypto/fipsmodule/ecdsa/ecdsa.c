@@ -50,6 +50,9 @@
  * (eay@cryptsoft.com).  This product includes software written by Tim
  * Hudson (tjh@cryptsoft.com). */
 
+#include <stdio.h>
+#include <inttypes.h>
+
 #include <openssl/ecdsa.h>
 
 #include <assert.h>
@@ -104,6 +107,7 @@ ECDSA_SIG *ECDSA_SIG_new(void) {
   if (sig == NULL) {
     return NULL;
   }
+  OPENSSL_memset(sig,0, sizeof(ECDSA_SIG));
   sig->r = BN_new();
   sig->s = BN_new();
   if (sig->r == NULL || sig->s == NULL) {
@@ -152,8 +156,34 @@ int ECDSA_SIG_set0(ECDSA_SIG *sig, BIGNUM *r, BIGNUM *s) {
   return 1;
 }
 
+static void printc(const void *input, size_t len) {
+  uint8_t *ticket_key = (uint8_t *)input;
+  for (size_t i = 0; i < len; i++) {
+    fprintf(stderr, "%02x", ticket_key[i]);
+    if ((i + 1) % 8 == 0) {
+      fprintf(stderr, " ");
+    }
+  }
+  fprintf(stderr, "\n");
+}
+
+static void print64(const uint64_t *ticket_key, size_t len) {
+  for (size_t i = 0; i < len; i++) {
+    fprintf(stderr, "%02lx ", ticket_key[i]);
+  }
+  fprintf(stderr, "\n");
+}
+
+static void printP(const EC_RAW_POINT *p) {
+  printc(&(p->X.words), EC_MAX_WORDS*8);
+  printc(&(p->Y.words), EC_MAX_WORDS*8);
+  printc(&(p->Z.words), EC_MAX_WORDS*8);
+}
+
 int ECDSA_do_verify(const uint8_t *digest, size_t digest_len,
                     const ECDSA_SIG *sig, const EC_KEY *eckey) {
+  fprintf(stderr, "ECDSA_do_verify digest:\n");
+  printc(digest, digest_len);
   const EC_GROUP *group = EC_KEY_get0_group(eckey);
   const EC_POINT *pub_key = EC_KEY_get0_public_key(eckey);
   if (group == NULL || pub_key == NULL || sig == NULL) {
@@ -161,7 +191,27 @@ int ECDSA_do_verify(const uint8_t *digest, size_t digest_len,
     return 0;
   }
 
+  fprintf(stderr, ">>>>> sig->s: %d %zu\n", sig->s->width, sizeof(BN_ULONG));
+  print64(sig->s->d, sig->s->width);
+  printc(sig->s, sizeof(BIGNUM));
+  BIGNUM *ss = sig->s;
+  fprintf(stderr, "parameters %d %d %d %d\n", ss->width, ss->dmax, ss->neg, ss->flags);
+  fprintf(stderr, ">>>>> sig->r: %d\n", sig->r->width);
+  print64(sig->r->d, sig->r->width);
+  printc(sig->r, sizeof(BIGNUM));
+  BIGNUM *rs = sig->r;
+  fprintf(stderr, "parameters %d %d %d %d\n", rs->width, rs->dmax, rs->neg, rs->flags);
   EC_SCALAR r, s, u1, u2, s_inv_mont, m;
+  OPENSSL_memset(&r, 0, sizeof(EC_SCALAR));
+  OPENSSL_memset(&s, 0, sizeof(EC_SCALAR));
+  OPENSSL_memset(&u1, 0, sizeof(EC_SCALAR));
+  OPENSSL_memset(&u2, 0, sizeof(EC_SCALAR));
+  OPENSSL_memset(&s_inv_mont, 0, sizeof(EC_SCALAR));
+  OPENSSL_memset(&m, 0, sizeof(EC_SCALAR));
+  fprintf(stderr, ">>>>> before r:\n");
+  printc(&r, sizeof(EC_SCALAR));
+  fprintf(stderr, ">>>>> before s:\n");
+  printc(&s, sizeof(EC_SCALAR));
   if (BN_is_zero(sig->r) ||
       !ec_bignum_to_scalar(group, &r, sig->r) ||
       BN_is_zero(sig->s) ||
@@ -169,6 +219,10 @@ int ECDSA_do_verify(const uint8_t *digest, size_t digest_len,
     OPENSSL_PUT_ERROR(ECDSA, ECDSA_R_BAD_SIGNATURE);
     return 0;
   }
+  fprintf(stderr, ">>>>> r:\n");
+  printc(&r, sizeof(EC_SCALAR));
+  fprintf(stderr, ">>>>> s:\n");
+  printc(&s, sizeof(EC_SCALAR));
 
   // s_inv_mont = s^-1 in the Montgomery domain.
   if (!ec_scalar_to_montgomery_inv_vartime(group, &s_inv_mont, &s)) {
@@ -182,14 +236,28 @@ int ECDSA_do_verify(const uint8_t *digest, size_t digest_len,
   // |s_inv_mont| is in Montgomery form while |m| and |r| are not, so |u1| and
   // |u2| will be taken out of Montgomery form, as desired.
   digest_to_scalar(group, &m, digest, digest_len);
+  fprintf(stderr, ">>>>> s_inv_mont:\n");
+  printc(&s_inv_mont, sizeof(EC_SCALAR));
+  fprintf(stderr, ">>>>> m:\n");
+  printc(&m, sizeof(EC_SCALAR));
   ec_scalar_mul_montgomery(group, &u1, &m, &s_inv_mont);
+  fprintf(stderr, ">>>>> u1:\n");
+  printc(&u1, sizeof(EC_SCALAR));
   ec_scalar_mul_montgomery(group, &u2, &r, &s_inv_mont);
-
+  fprintf(stderr, ">>>>> u2:\n");
+  printc(&u2, sizeof(EC_SCALAR));
+  fprintf(stderr, ">>>>> &pub_key->raw:\n");
+  printP(&pub_key->raw);
+  fprintf(stderr, ">>>>> &group->generator->raw:\n");
+  printP(&(group->generator->raw));
   EC_RAW_POINT point;
+  OPENSSL_memset(&point, 0, sizeof(EC_RAW_POINT));
   if (!ec_point_mul_scalar_public(group, &point, &u1, &pub_key->raw, &u2)) {
     OPENSSL_PUT_ERROR(ECDSA, ERR_R_EC_LIB);
     return 0;
   }
+  fprintf(stderr, ">>>>> computed p:\n");
+  printP(&point);
 
   if (!ec_cmp_x_coordinate(group, &point, &r)) {
     OPENSSL_PUT_ERROR(ECDSA, ECDSA_R_BAD_SIGNATURE);
@@ -202,6 +270,8 @@ int ECDSA_do_verify(const uint8_t *digest, size_t digest_len,
 static ECDSA_SIG *ecdsa_sign_impl(const EC_GROUP *group, int *out_retry,
                                   const EC_SCALAR *priv_key, const EC_SCALAR *k,
                                   const uint8_t *digest, size_t digest_len) {
+//  fprintf(stderr, "ecdsa_sign_impl k: \n");
+//  print64(k->words, EC_MAX_WORDS);
   *out_retry = 0;
 
   // Check that the size of the group order is FIPS compliant (FIPS 186-4
@@ -211,6 +281,8 @@ static ECDSA_SIG *ecdsa_sign_impl(const EC_GROUP *group, int *out_retry,
     OPENSSL_PUT_ERROR(ECDSA, EC_R_INVALID_GROUP_ORDER);
     return NULL;
   }
+//  fprintf(stderr, "ecdsa_sign_impl: \n");
+//  print64(order->d, order->width);
 
   // Compute r, the x-coordinate of k * generator.
   EC_RAW_POINT tmp_point;
@@ -219,6 +291,9 @@ static ECDSA_SIG *ecdsa_sign_impl(const EC_GROUP *group, int *out_retry,
       !ec_get_x_coordinate_as_scalar(group, &r, &tmp_point)) {
     return NULL;
   }
+
+//  fprintf(stderr, ">>>>> ecdsa_sign_impl r.words:\n");
+//  print64(r.words, EC_MAX_WORDS);
 
   if (ec_scalar_is_zero(group, &r)) {
     *out_retry = 1;
@@ -231,11 +306,16 @@ static ECDSA_SIG *ecdsa_sign_impl(const EC_GROUP *group, int *out_retry,
   EC_SCALAR s;
   ec_scalar_to_montgomery(group, &s, &r);
   ec_scalar_mul_montgomery(group, &s, priv_key, &s);
+//  fprintf(stderr, ">>>>> ecdsa_sign_impl s=priv_key * r s.words:\n");
+//  print64(s.words, EC_MAX_WORDS);
 
   // s = m + priv_key * r.
   EC_SCALAR tmp;
   digest_to_scalar(group, &tmp, digest, digest_len);
   ec_scalar_add(group, &s, &s, &tmp);
+
+//  fprintf(stderr, ">>>>> ecdsa_sign_impl s=m + priv_key * r s.words:\n");
+//  print64(s.words, EC_MAX_WORDS);
 
   // s = k^-1 * (m + priv_key * r). First, we compute k^-1 in the Montgomery
   // domain. This is |ec_scalar_to_montgomery| followed by
@@ -246,7 +326,11 @@ static ECDSA_SIG *ecdsa_sign_impl(const EC_GROUP *group, int *out_retry,
   // would fail), so the inverse must exist.
   ec_scalar_inv0_montgomery(group, &tmp, k);     // tmp = k^-1 R^2
   ec_scalar_from_montgomery(group, &tmp, &tmp);  // tmp = k^-1 R
+//  fprintf(stderr, ">>>>> ecdsa_sign_impl tmp.words:\n");
+//  print64(tmp.words, EC_MAX_WORDS);
   ec_scalar_mul_montgomery(group, &s, &s, &tmp);
+//  fprintf(stderr, ">>>>> ecdsa_sign_impl s.words:\n");
+//  print64(s.words, EC_MAX_WORDS);
   if (ec_scalar_is_zero(group, &s)) {
     *out_retry = 1;
     return NULL;
@@ -259,6 +343,8 @@ static ECDSA_SIG *ecdsa_sign_impl(const EC_GROUP *group, int *out_retry,
     ECDSA_SIG_free(ret);
     return NULL;
   }
+//  fprintf(stderr, ">>>>> ecdsa_sign_impl s.words2:\n");
+//  print64(s.words, EC_MAX_WORDS);
   return ret;
 }
 
