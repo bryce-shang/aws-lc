@@ -157,6 +157,12 @@ extern "C" {
 #define V_ASN1_NEG_INTEGER (V_ASN1_INTEGER | V_ASN1_NEG)
 #define V_ASN1_NEG_ENUMERATED (V_ASN1_ENUMERATED | V_ASN1_NEG)
 
+/*
+ * This indicates that the ASN1_STRING is not a real value but just a place
+ * holder for the location where indefinite length constructed data should be
+ * inserted in the memory buffer
+ */
+# define ASN1_STRING_FLAG_NDEF 0x010
 
 // Strings.
 //
@@ -260,6 +266,8 @@ OPENSSL_EXPORT ASN1_STRING *ASN1_STRING_new(void);
 
 // ASN1_STRING_free releases memory associated with |str|.
 OPENSSL_EXPORT void ASN1_STRING_free(ASN1_STRING *str);
+
+OPENSSL_EXPORT void ASN1_STRING_clear_free(ASN1_STRING *a);
 
 // ASN1_STRING_copy sets |dst| to a copy of |str|. It returns one on success and
 // zero on error.

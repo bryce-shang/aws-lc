@@ -404,6 +404,16 @@ void ASN1_STRING_free(ASN1_STRING *str)
     OPENSSL_free(str);
 }
 
+void ASN1_STRING_clear_free(ASN1_STRING *a)
+{
+    if (NULL == a) {
+        return;
+    }
+    if (a->data && !(a->flags & ASN1_STRING_FLAG_NDEF))
+        OPENSSL_cleanse(a->data, a->length);
+    ASN1_STRING_free(a);
+}
+
 int ASN1_STRING_cmp(const ASN1_STRING *a, const ASN1_STRING *b)
 {
     int i;
