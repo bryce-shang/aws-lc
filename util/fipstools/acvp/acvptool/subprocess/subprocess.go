@@ -116,6 +116,7 @@ func (m *Subprocess) Close() {
 
 // Transact performs a single request--response pair with the subprocess.
 func (m *Subprocess) Transact(cmd string, expectedResults int, args ...[]byte) ([][]byte, error) {
+//     fmt.Printf("Subprocess transact cmd %s\n", cmd)
 	argLength := len(cmd)
 	for _, arg := range args {
 		argLength += len(arg)
@@ -133,21 +134,24 @@ func (m *Subprocess) Transact(cmd string, expectedResults int, args ...[]byte) (
 	}
 
 	if _, err := m.stdin.Write(buf); err != nil {
+	    fmt.Printf("Subprocess Write buf\n", err)
 		return nil, err
 	}
 
 	buf = buf[:4]
 	if _, err := io.ReadFull(m.stdout, buf); err != nil {
+	    fmt.Printf("Subprocess ReadFull err0?\n", err)
 		return nil, err
 	}
 
 	numResults := binary.LittleEndian.Uint32(buf)
 	if int(numResults) != expectedResults {
-		return nil, fmt.Errorf("expected %d results from %q but got %d", expectedResults, cmd, numResults)
+		return nil, fmt.Errorf("aloha as expected %d results from %q but got %d", expectedResults, cmd, numResults)
 	}
 
 	buf = make([]byte, 4*numResults)
 	if _, err := io.ReadFull(m.stdout, buf); err != nil {
+	    fmt.Printf("Subprocess ReadFull err1?\n", err)
 		return nil, err
 	}
 
@@ -162,6 +166,7 @@ func (m *Subprocess) Transact(cmd string, expectedResults int, args ...[]byte) (
 
 	results := make([]byte, resultsLength)
 	if _, err := io.ReadFull(m.stdout, results); err != nil {
+	    fmt.Printf("Subprocess ReadFull err2?\n", err)
 		return nil, err
 	}
 

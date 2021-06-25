@@ -20,6 +20,7 @@
 #include <errno.h>
 #include <limits.h>
 #include <string.h>
+#include <stdio.h>
 #include <sys/uio.h>
 #include <unistd.h>
 #include <cstdarg>
@@ -1064,6 +1065,8 @@ static bool AEADSeal(const Span<const uint8_t> args[], ReplyCallback write_reply
   Span<const uint8_t> nonce = args[3];
   Span<const uint8_t> ad = args[4];
 
+  printf("AEADSeal aloha 1\n");
+
   bssl::ScopedEVP_AEAD_CTX ctx;
   if (!SetupFunc(ctx.get(), tag_len_span, key)) {
     return false;
@@ -1481,7 +1484,9 @@ static bool ECDSAKeyVer(const Span<const uint8_t> args[], ReplyCallback write_re
 }
 
 static const EVP_MD *HashFromName(Span<const uint8_t> name) {
-  if (StringEq(name, "SHA2-224")) {
+  if (StringEq(name, "SHA-1")) {
+    return EVP_sha1();
+  } else if (StringEq(name, "SHA2-224")) {
     return EVP_sha224();
   } else if (StringEq(name, "SHA2-256")) {
     return EVP_sha256();
@@ -1555,19 +1560,31 @@ static bool ECDSASigVer(const Span<const uint8_t> args[], ReplyCallback write_re
   return write_reply({Span<const uint8_t>(reply)});
 }
 
+static void printa(const uint8_t *ticket_key, size_t len) {
+  for (size_t i = 0; i < len; i++) {
+    LOG_ERROR("%02x", ticket_key[i]);
+  }
+  LOG_ERROR("\n");
+}
+
 static bool CMAC_AES(const Span<const uint8_t> args[], ReplyCallback write_reply) {
   uint8_t mac[16];
   if (!AES_CMAC(mac, args[1].data(), args[1].size(), args[2].data(),
                 args[2].size())) {
+    printa(args[1].data(), args[1].size());
+    printa(args[2].data(), args[2].size());
+    LOG_ERROR("AES_CMAC failed.\n");
     return false;
   }
 
   uint32_t mac_len;
   if (args[0].size() != sizeof(mac_len)) {
+    LOG_ERROR("maclen not match.\n");
     return false;
   }
   memcpy(&mac_len, args[0].data(), sizeof(mac_len));
   if (mac_len > sizeof(mac)) {
+    LOG_ERROR("!!!mac_len > sizeof(mac).\n");
     return false;
   }
 

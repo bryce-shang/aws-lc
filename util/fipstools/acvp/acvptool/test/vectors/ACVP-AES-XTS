@@ -1,0 +1,81 @@
+[
+  {
+    "time": "2021-01-18T07:33:32-08:00",
+    "url": "acvp/v1/testSessions/138012",
+    "vectorSetUrls": [
+      "/acvp/v1/testSessions/138012/vectorSets/432636"
+    ]
+  },
+  {
+    "algorithm": "ACVP-AES-XTS",
+    "isSample": true,
+    "revision": "1.0",
+    "testGroups": [
+      {
+        "direction": "encrypt",
+        "keyLen": 128,
+        "payloadLen": 1024,
+        "testType": "AFT",
+        "tests": [
+          {
+            "key": "19F8EB4048BFFB83E3A575A4236A1CE1027FABE41CB73BF27EA5D61D12B1FDFC",
+            "pt": "33B964A01F478BF69407560803ED702F16A6E0FEBE01237D990B88D4B5908A39AD7891939A3387E37D69E54034D4FD06798CAD9CEAAB75C44DFED4A72A095F7A478BDD01F3E9BBC442CBAA33C6707C6DB2B2DD150BD1C48B7A857D55F7C9AE289DACB1B041B0B956A1B86DAE36EF4ACA54CB71D831FD26F83C1EB2AC405D7CAF",
+            "sequenceNumber": 216,
+            "tcId": 10
+          }
+        ],
+        "tgId": 1,
+        "tweakMode": "number"
+      },
+      {
+        "direction": "encrypt",
+        "keyLen": 256,
+        "payloadLen": 1024,
+        "testType": "AFT",
+        "tests": [
+          {
+            "key": "2E6F3461866C76EDDBD0BAA636A2C442972906B9EE358603E90DFAF91A3C23BC023B80B516C2449651D16C916D41956D01821CACAC60C3AF254B24CB03C7BF48",
+            "pt": "6128E7CC10C6C4B4D5B219B1E5AC4F0DD8FEC1D98585E4EA08917BDB761A496A83513EBC4E6E6CC35CA131904ACB40A1269BE54D3242999FE4363B7C8921560643647D264E76A8BE4BF31C1E25C920430D05FCCD218DCE01778C32F72DB7B679C0565A6B0F4EA6236807DB0143112C172E6834409A165D9ECF8D74F59A11C527",
+            "sequenceNumber": 189,
+            "tcId": 20
+          }
+        ],
+        "tgId": 2,
+        "tweakMode": "number"
+      },
+      {
+        "direction": "decrypt",
+        "keyLen": 128,
+        "payloadLen": 1024,
+        "testType": "AFT",
+        "tests": [
+          {
+            "ct": "D0FE7B2A6E21DBB7E5AF374EA1F73AE3D1BAD698BC464E2CD567F5B3B79A08034475143D47B8FCB98184A4573BC38FB139C9C7C6CAC589E43BC3E36ADA5C3C8A06721230A974AC9880A15D452B8AF0B8D2D00FF3250F7556A6BEB1F4517C5ADECAD0E12B7C618249BCECD5401B2FA3EDB734E7353B065AE79D8E922CBD698556",
+            "key": "B0AAF9D4D7FFB559CCF6D41C0263E742E2E8C85D080EEE27BC86112CBEC68013",
+            "sequenceNumber": 38,
+            "tcId": 30
+          }
+        ],
+        "tgId": 3,
+        "tweakMode": "number"
+      },
+      {
+        "direction": "decrypt",
+        "keyLen": 256,
+        "payloadLen": 1024,
+        "testType": "AFT",
+        "tests": [
+          {
+            "ct": "97E38730CA2CCB1D9B12A2B526FA1C1118B56A7B0122B9020AD98D8901CD2EBE4768A154B572E6939085153D5DCAED63BF5E722445C03739373DA3B1BF5CA2B14FFF80145DDC708AD9AF3B385CF140AD8B4CE5A47F7EBEC87CFF3025FCC042CCBD712E9D7878AFA502F1A20388B33968639F71022860237E9DF88C0D82727C7C",
+            "key": "F2AC9C725E202B7F98FC091798E0D0462CD0A4124C9E630148AA6A8C1FD2E3B6E68BCCF7ABCD8348E38F177130E94D984B5E6E59F3F028BEA44840E1680F0EB0",
+            "sequenceNumber": 19,
+            "tcId": 40
+          }
+        ],
+        "tgId": 4,
+        "tweakMode": "number"
+      }
+    ],
+    "vsId": 432636
+  }
+]

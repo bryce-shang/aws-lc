@@ -189,7 +189,17 @@ func looksLikeHeaderElement(element json.RawMessage) bool {
 	if err := json.Unmarshal(element, &headerFields); err != nil {
 		return false
 	}
-	return len(headerFields.URL) > 0
+	return len(headerFields.URL) > 0 || looksLikeHeaderElement2(element)
+}
+
+func looksLikeHeaderElement2(element json.RawMessage) bool {
+	var headerFields struct {
+		VAL string `json:"acvVersion"`
+	}
+	if err := json.Unmarshal(element, &headerFields); err != nil {
+		return false
+	}
+	return len(headerFields.VAL) > 0
 }
 
 // processFile reads a file containing vector sets, at least in the format
@@ -250,17 +260,17 @@ func processFile(filename string, supportedAlgos []map[string]interface{}, middl
 			ID   uint64 `json:"vsId"`
 		}
 		if err := json.Unmarshal(element, &commonFields); err != nil {
-			return fmt.Errorf("failed to extract common fields from vector set #%d", i+1)
+			return fmt.Errorf("failed to extract common fields from vector set #%d in %s", i+1, filename)
 		}
 
 		algo := commonFields.Algo
 		if _, ok := algos[algo]; !ok {
-			return fmt.Errorf("vector set #%d contains unsupported algorithm %q", i+1, algo)
+			return fmt.Errorf("vector set #%d contains unsupported algorithm %q in %s", i+1, algo, filename)
 		}
 
 		replyGroups, err := middle.Process(algo, element)
 		if err != nil {
-			return fmt.Errorf("while processing vector set #%d: %s", i+1, err)
+			return fmt.Errorf("acvp.go middle.Process while processing vector set #%d: %s", i+1, err)
 		}
 
 		group := map[string]interface{}{

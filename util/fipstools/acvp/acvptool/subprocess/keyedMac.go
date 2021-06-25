@@ -58,13 +58,16 @@ type keyedMACPrimitive struct {
 }
 
 func (k *keyedMACPrimitive) Process(vectorSet []byte, m Transactable) (interface{}, error) {
+    fmt.Printf("aloha keyedMAC 1\n")
 	var vs keyedMACTestVectorSet
 	if err := json.Unmarshal(vectorSet, &vs); err != nil {
 		return nil, err
 	}
 
+    fmt.Printf("aloha keyedMAC 2\n")
 	var respGroups []keyedMACTestGroupResponse
 	for _, group := range vs.Groups {
+	    fmt.Printf("aloha keyedMAC tg %d\n", group.ID)
 		respGroup := keyedMACTestGroupResponse{ID: group.ID}
 
 		if group.KeyBits%8 != 0 {
@@ -90,6 +93,7 @@ func (k *keyedMACPrimitive) Process(vectorSet []byte, m Transactable) (interface
 		outputBytes := uint32le(group.MACBits / 8)
 
 		for _, test := range group.Tests {
+		    fmt.Printf("aloha keyedMAC tc %d\n", test.ID)
 			respTest := keyedMACTestResponse{ID: test.ID}
 
 			// Validate input.
@@ -124,7 +128,7 @@ func (k *keyedMACPrimitive) Process(vectorSet []byte, m Transactable) (interface
 			if generate {
 				result, err := m.Transact(k.algo, 1, outputBytes, key, msg)
 				if err != nil {
-					return nil, fmt.Errorf("wrapper %s operation failed: %s", k.algo, err)
+					return nil, fmt.Errorf("1 wrapper %s operation failed: %s", k.algo, err)
 				}
 
 				calculatedMAC := result[0]
@@ -144,7 +148,7 @@ func (k *keyedMACPrimitive) Process(vectorSet []byte, m Transactable) (interface
 
 				result, err := m.Transact(k.algo+"/verify", 1, key, msg, expectedMAC)
 				if err != nil {
-					return nil, fmt.Errorf("wrapper %s operation failed: %s", k.algo, err)
+					return nil, fmt.Errorf("2 wrapper %s operation failed: %s", k.algo, err)
 				}
 
 				if len(result[0]) != 1 || (result[0][0]&0xfe) != 0 {

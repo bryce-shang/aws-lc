@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
     if (!handler(args.subspan(1).data(), write_reply)) {
       const std::string name(reinterpret_cast<const char *>(args[0].data()),
                              args[0].size());
-      fprintf(stderr, "\'%s\' operation failed.\n", name.c_str());
+      fprintf(stderr, "\'%s\' operation failed modulewrapper ennn.\n", name.c_str());
       return 3;
     }
   }

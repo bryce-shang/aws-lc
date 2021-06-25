@@ -1,0 +1,424 @@
+[{
+    "time": "2020-12-17T10:10:25-08:00",
+    "url": "acvp/v1/testSessions/133379",
+    "vectorSetUrls": [
+        "/acvp/v1/testSessions/133379/vectorSets/413621"
+    ]
+},{
+    "testGroups": [
+        {
+            "tgId": 1,
+            "tests": [
+                {
+                    "tcId": 11,
+                    "ct": "d348846aa738d9529238cdcb60cb4d64",
+                    "tag": "bc656d745e0ed891a188bdc1389deeae"
+                }
+            ]
+        },
+        {
+            "tgId": 2,
+            "tests": [
+                {
+                    "tcId": 26,
+                    "ct": "07581f072f9267b3e2a03867515c296289f433dfdbb69ac7570ba39679d37b09",
+                    "tag": "ccd53d2e558a7f4d8b16178da00171"
+                }
+            ]
+        },
+        {
+            "tgId": 3,
+            "tests": [
+                {
+                    "tcId": 41,
+                    "ct": "0a4f4044fd35ebb76dcf41626f99cbf23a004c1a3d",
+                    "tag": "17354510794c96ba"
+                }
+            ]
+        },
+        {
+            "tgId": 4,
+            "tests": [
+                {
+                    "tcId": 56,
+                    "ct": "",
+                    "tag": "dbd779343a7eb139a68598c5b1"
+                }
+            ]
+        },
+        {
+            "tgId": 5,
+            "tests": [
+                {
+                    "tcId": 71,
+                    "ct": "0239",
+                    "tag": "588545038ec8894c97af5b55"
+                }
+            ]
+        },
+        {
+            "tgId": 6,
+            "tests": [
+                {
+                    "tcId": 86,
+                    "ct": "2bb9bb8e982794d9d57b3a988ee657c298e3244c75",
+                    "tag": "015c3a8f"
+                }
+            ]
+        },
+        {
+            "tgId": 7,
+            "tests": [
+                {
+                    "tcId": 101,
+                    "ct": "8d5d",
+                    "tag": "f139ac79613eda58197c0fc884f6"
+                }
+            ]
+        },
+        {
+            "tgId": 8,
+            "tests": [
+                {
+                    "tcId": 116,
+                    "ct": "bde1abe0f43ee0bdca080b592d5def831106349593484cd82ffe76c404dcc124",
+                    "tag": "2d32632b1f2bb148"
+                }
+            ]
+        },
+        {
+            "tgId": 9,
+            "tests": [
+                {
+                    "tcId": 131,
+                    "ct": "56ab3fac271e9cd5121fd989a546f43e",
+                    "tag": "855f234e8856ebca14d632db"
+                }
+            ]
+        },
+        {
+            "tgId": 10,
+            "tests": [
+                {
+                    "tcId": 146,
+                    "ct": "",
+                    "tag": "9af141e9"
+                }
+            ]
+        },
+        {
+            "tgId": 11,
+            "tests": [
+                {
+                    "tcId": 161,
+                    "ct": "96756fb2a7f7d6e7ae9bc1240c84e1ce",
+                    "tag": "bc93ac6184320e37f15eb99c5b57c2eb"
+                }
+            ]
+        },
+        {
+            "tgId": 12,
+            "tests": [
+                {
+                    "tcId": 176,
+                    "ct": "b2d67bae62e9e45b4c7485671fb8c07b83ab36daa6",
+                    "tag": "3819f6bc331975f12b2c1bcff898"
+                }
+            ]
+        },
+        {
+            "tgId": 13,
+            "tests": [
+                {
+                    "tcId": 191,
+                    "ct": "fae2",
+                    "tag": "ea7e83e67802cda6a9d8079c8b"
+                }
+            ]
+        },
+        {
+            "tgId": 14,
+            "tests": [
+                {
+                    "tcId": 206,
+                    "ct": "",
+                    "tag": "e990d50a3756268db0d9d5dbeae99c"
+                }
+            ]
+        },
+        {
+            "tgId": 15,
+            "tests": [
+                {
+                    "tcId": 221,
+                    "ct": "ecc180957a594893e9f22b53dc3c833748cb9afa849d57371cc692ad36ddda03",
+                    "tag": "8785781870193cdd9a08f4d0"
+                }
+            ]
+        },
+        {
+            "tgId": 16,
+            "tests": [
+                {
+                    "tcId": 236,
+                    "ct": "bc6df96c29396bd4e936a266d18a27ba",
+                    "tag": "3c382b0104f4dc375f32590c997b7f9e"
+                }
+            ]
+        },
+        {
+            "tgId": 17,
+            "tests": [
+                {
+                    "tcId": 251,
+                    "ct": "",
+                    "tag": "670fec37c92c228affbb4cbe98"
+                }
+            ]
+        },
+        {
+            "tgId": 18,
+            "tests": [
+                {
+                    "tcId": 266,
+                    "ct": "21d65e26e9d93c5c1dd62363155b4768b1009af462",
+                    "tag": "baa7fe8500e58a5d492ac8c9f252"
+                }
+            ]
+        },
+        {
+            "tgId": 19,
+            "tests": [
+                {
+                    "tcId": 281,
+                    "ct": "7e95",
+                    "tag": "c1386cc5"
+                }
+            ]
+        },
+        {
+            "tgId": 20,
+            "tests": [
+                {
+                    "tcId": 296,
+                    "ct": "c59c3c7629afbeda43dcbe52ee5aaf7d93799ae65d8d4fb4dbc37fa532b79cfe",
+                    "tag": "31d25c4d55aabaa0ec24557f26e368"
+                }
+            ]
+        },
+        {
+            "tgId": 21,
+            "tests": [
+                {
+                    "tcId": 311,
+                    "ct": "fac68275f13607862d44b9bf7a4997828351b1a9ec4b58be67753dc01083b249",
+                    "tag": "4f147f0f9d94a402"
+                }
+            ]
+        },
+        {
+            "tgId": 22,
+            "tests": [
+                {
+                    "tcId": 326,
+                    "pt": "1e7bf233200ec435d238714b838ccb8daaa76fe0e7",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 23,
+            "tests": [
+                {
+                    "tcId": 341,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 24,
+            "tests": [
+                {
+                    "tcId": 356,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 25,
+            "tests": [
+                {
+                    "tcId": 371,
+                    "pt": "65ce300dd550d5c8e6d3c58ef4f6591c",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 26,
+            "tests": [
+                {
+                    "tcId": 386,
+                    "pt": "68a7016b260207e77321860353b7f0b4",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 27,
+            "tests": [
+                {
+                    "tcId": 401,
+                    "pt": "9b8c",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 28,
+            "tests": [
+                {
+                    "tcId": 416,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 29,
+            "tests": [
+                {
+                    "tcId": 431,
+                    "pt": "547f0bc6cf49d350f1595f8a9009843646a8a2b2b8",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 30,
+            "tests": [
+                {
+                    "tcId": 446,
+                    "pt": "ea453123e4a21321a827330f2fc5e9d7414cf961e0cb6212cd7dc91a6953b559",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 31,
+            "tests": [
+                {
+                    "tcId": 461,
+                    "pt": "824d4f981769572e0f32dbb149a9a423",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 32,
+            "tests": [
+                {
+                    "tcId": 476,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 33,
+            "tests": [
+                {
+                    "tcId": 491,
+                    "pt": "1890cd954595a2a7a42426d083c2ca04e5627ee004",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 34,
+            "tests": [
+                {
+                    "tcId": 506,
+                    "pt": "",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 35,
+            "tests": [
+                {
+                    "tcId": 521,
+                    "pt": "c4c2c1feddaf42c357d57595984e389a70b57fc42bd5e217d1e9af8e5fedb1d7",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 36,
+            "tests": [
+                {
+                    "tcId": 536,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 37,
+            "tests": [
+                {
+                    "tcId": 551,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 38,
+            "tests": [
+                {
+                    "tcId": 566,
+                    "pt": "",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 39,
+            "tests": [
+                {
+                    "tcId": 581,
+                    "pt": "3e9a1e3bd148ede01dda665108fbb4ed3e28be2c2c",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 40,
+            "tests": [
+                {
+                    "tcId": 596,
+                    "testPassed": false
+                }
+            ]
+        },
+        {
+            "tgId": 41,
+            "tests": [
+                {
+                    "tcId": 611,
+                    "pt": "87e3",
+                    "testPassed": true
+                }
+            ]
+        },
+        {
+            "tgId": 42,
+            "tests": [
+                {
+                    "tcId": 626,
+                    "pt": "325438b1c3ce1d5f372b7f5aab6ce9078daf82a264",
+                    "testPassed": true
+                }
+            ]
+        }
+    ],
+    "vsId": 413621
+}]

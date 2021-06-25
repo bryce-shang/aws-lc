@@ -1,0 +1,878 @@
+[
+  {
+    "time": "2020-12-17T10:10:25-08:00",
+    "url": "acvp/v1/testSessions/133379",
+    "vectorSetUrls": [
+      "/acvp/v1/testSessions/133379/vectorSets/413621"
+    ]
+  },
+  {
+    "algorithm": "ACVP-AES-GCM",
+    "isSample": true,
+    "revision": "1.0",
+    "testGroups": [
+      {
+        "aadLen": 40,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 128,
+        "tagLen": 128,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "5BFA5DA250",
+            "iv": "9CE4673C82E6F9B40034D00C",
+            "key": "C9DD186C298DBA3FD3DC40B399B8BDDC",
+            "pt": "6DDB11912BC661F123AEAAC01BC84FD4",
+            "tcId": 11
+          }
+        ],
+        "tgId": 1
+      },
+      {
+        "aadLen": 0,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 256,
+        "tagLen": 120,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "iv": "7D3F59CA95D5C81CBE902317",
+            "key": "FF3D5B01B115DBA1CB45908DE0C69068",
+            "pt": "9084CDADF9B1A18C76E2C4DFE221F02161F2D71D9F11E87F880C0F1FCBD0AC59",
+            "tcId": 26
+          }
+        ],
+        "tgId": 2
+      },
+      {
+        "aadLen": 112,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 168,
+        "tagLen": 64,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "AD9DE3607722145FED5351E6DF11",
+            "iv": "DCAD58020A1546DBE2FC2907",
+            "key": "A6A51C0D4629633C2843A86589217431",
+            "pt": "DF4DD983F710F3CF339B934994D6E18CC600438991",
+            "tcId": 41
+          }
+        ],
+        "tgId": 3
+      },
+      {
+        "aadLen": 320,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 0,
+        "tagLen": 104,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "F6954C51E673B507F89167940940A0ECF616D7B46BB0D016A68AE74DE7143E15D3EA13095C4623F8",
+            "iv": "9E8D9360F1875B3F72D184D9",
+            "key": "C25797099EA8970A6B54948BF2581B65",
+            "pt": "",
+            "tcId": 56
+          }
+        ],
+        "tgId": 4
+      },
+      {
+        "aadLen": 112,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 16,
+        "tagLen": 96,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "08EB97BA6A080CF4A90DDED22CCD",
+            "iv": "47E97A0456225980C29FAB7F",
+            "key": "04EED9CBF69B09491BA85DC1537F3A28",
+            "pt": "1391",
+            "tcId": 71
+          }
+        ],
+        "tgId": 5
+      },
+      {
+        "aadLen": 40,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 168,
+        "tagLen": 32,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "7C2631D366",
+            "iv": "FBB437A55966596B2CEB882A",
+            "key": "96EC198EC3F4EF8F25A82FD5DDA470D0",
+            "pt": "668A36FB44A2F876ABC3BAD380EFFA4898BD772AC4",
+            "tcId": 86
+          }
+        ],
+        "tgId": 6
+      },
+      {
+        "aadLen": 0,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 16,
+        "tagLen": 112,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "iv": "1E317D41FC7D54173C5885A8",
+            "key": "A7B0AD1F9B9EFE1A0D5ED3ACEAE1817E",
+            "pt": "FFFD",
+            "tcId": 101
+          }
+        ],
+        "tgId": 7
+      },
+      {
+        "aadLen": 320,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 256,
+        "tagLen": 64,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "E8BA82F48530676ADFEF0AA7D6576AC8C143C3AD997EAC915E01A8DC70593B31BA89B2003CF8D64C",
+            "iv": "16D0C7F629FC409EF93FF21C",
+            "key": "2C98399ABBBEEC5C7C7E3AA6E633A316F56408B460EF45D3",
+            "pt": "19674F4A5D255BAA0022655EA0A86544AC363B5CA3E05E78479EC455EAF23E91",
+            "tcId": 116
+          }
+        ],
+        "tgId": 8
+      },
+      {
+        "aadLen": 0,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 128,
+        "tagLen": 96,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "iv": "0EBDF2A8FD3297A472099760",
+            "key": "4EF82862C8CEE896F10F697B777506794C2612B25B957336",
+            "pt": "92886937484A989E3EF61CCF99E1FBDE",
+            "tcId": 131
+          }
+        ],
+        "tgId": 9
+      },
+      {
+        "aadLen": 320,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 0,
+        "tagLen": 32,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "4435219A404CF5B9208C2D6253257D3DCC758005A15FCF8F25AD09BB777E2D6EB60825663E1B78DF",
+            "iv": "9D17A46FBA02B3FD7DF540D6",
+            "key": "306C87699B60B6B92B92D0C5FBE7650623FA320C4BB07128",
+            "pt": "",
+            "tcId": 146
+          }
+        ],
+        "tgId": 10
+      },
+      {
+        "aadLen": 40,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 128,
+        "tagLen": 128,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "568CF378FF",
+            "iv": "6E584A98A795A2CAA7B1D5E7",
+            "key": "B76DD1AEFC737625A3FB7495E207CF32713DA3E2159C7710",
+            "pt": "8405CD99FF055EC76EFDAF49CC92932F",
+            "tcId": 161
+          }
+        ],
+        "tgId": 11
+      },
+      {
+        "aadLen": 112,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 168,
+        "tagLen": 112,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "8601C3F9C9819FBCD03353A5999C",
+            "iv": "994BB4AEB11C9D7AB66DB432",
+            "key": "BE1D0FBE7324C39565B4255DCB1323D13CED88F1AD7EA85D",
+            "pt": "0CC0292D43EBB6E8579594C28D0C20DB97471A42A9",
+            "tcId": 176
+          }
+        ],
+        "tgId": 12
+      },
+      {
+        "aadLen": 40,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 16,
+        "tagLen": 104,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "A1F4014B34",
+            "iv": "611AD1C13454782B45A3B315",
+            "key": "B4A94C2622D33B50708FDB044BC9390594EFEA838EA5ADD1",
+            "pt": "E681",
+            "tcId": 191
+          }
+        ],
+        "tgId": 13
+      },
+      {
+        "aadLen": 112,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 0,
+        "tagLen": 120,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "B576D83E6C99FFCD7D5A8BD8997F",
+            "iv": "E325B85CBCAED72DE7044A45",
+            "key": "8E0F4E9E2DAA9A06244AD86D24B59DCDA6561F5F6146F45B",
+            "pt": "",
+            "tcId": 206
+          }
+        ],
+        "tgId": 14
+      },
+      {
+        "aadLen": 0,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 256,
+        "tagLen": 96,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "iv": "7AAD653A99B67097F135A401",
+            "key": "6E71206683AAD7FF4DF2EFA1FEC68BDA3D12B3D001FDA79D72DD661B46C65EC4",
+            "pt": "59FED8B012374920963E71224AD717FFD2B65D4FFAFE004622339DCDCA6D3DBE",
+            "tcId": 221
+          }
+        ],
+        "tgId": 15
+      },
+      {
+        "aadLen": 320,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 128,
+        "tagLen": 128,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "F70FE914F0147965A70E790508EAB21A7AEEBDC58D6F9697066FF52D399A8EAE14C93B2EC7D42D8F",
+            "iv": "D4915D0C0B119A447E720547",
+            "key": "75C029333EB1E91EA34EF6041B8416A22E308D7F363385B7A2D448EF8D997B30",
+            "pt": "9FA9322A6B695F555464C25A4800E153",
+            "tcId": 236
+          }
+        ],
+        "tgId": 16
+      },
+      {
+        "aadLen": 112,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 0,
+        "tagLen": 104,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "48100F7479E1FFA5196EA5E29667",
+            "iv": "2033828388C9BB439D8ACC32",
+            "key": "AD1294FAF71AA0DD420607ABD7EA8E3CB39678EA138B645FEAD4F5D75A8A1617",
+            "pt": "",
+            "tcId": 251
+          }
+        ],
+        "tgId": 17
+      },
+      {
+        "aadLen": 320,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 168,
+        "tagLen": 112,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "519215C70EC6652FC32680CFB05EFCFC2CF7BC04BDA73437F05C63A4D9C69B7D18F5B83EF6D7A38F",
+            "iv": "EFC30CAEAD8328DBEDF0492D",
+            "key": "D19F4C0AD00C9FB15654F3CFD52E52D939E9ED75258DA30AB10443900EB9F9CD",
+            "pt": "9571AC6ACEF128E34DC91C93CEBDB3F1133794E6BD",
+            "tcId": 266
+          }
+        ],
+        "tgId": 18
+      },
+      {
+        "aadLen": 40,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 16,
+        "tagLen": 32,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "D08B58AC30",
+            "iv": "F038F193EA86C49F83778A04",
+            "key": "309EFC7E798644CC9CF5A8A2ECB5B289502625ADF3744FA6441E2FBEEFA7E259",
+            "pt": "EF4F",
+            "tcId": 281
+          }
+        ],
+        "tgId": 19
+      },
+      {
+        "aadLen": 0,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 256,
+        "tagLen": 120,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "iv": "94CD3EF6B1059FA540DE35B1",
+            "key": "1A45B34765D07A546233CABC7037496C413686D89ECFF73C978BF62747D68370",
+            "pt": "018E67085BE918E0C7EE028C0AD681A82DE77BC44E3740824D0F307DB1424264",
+            "tcId": 296
+          }
+        ],
+        "tgId": 20
+      },
+      {
+        "aadLen": 40,
+        "direction": "encrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 256,
+        "tagLen": 64,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "469F87D02A",
+            "iv": "CA9950F2C605D28B1AA01073",
+            "key": "DCCC3CD72FC0DB70FF04F169055751A13D030FABF49733094237FE579EDCA730",
+            "pt": "D4823C0CA0F84AAE32C5C2FEA29329C55D7068C1D0E4F519D9DDD0796F0E36C2",
+            "tcId": 311
+          }
+        ],
+        "tgId": 21
+      },
+      {
+        "aadLen": 0,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 168,
+        "tagLen": 104,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "ct": "549CD227AED059C5210166ECF33A3A37BA0E4E47F2",
+            "iv": "2E0F8995903326D2B958991F",
+            "key": "B3A7FF23939405E79899004BBC570CCF",
+            "tag": "190FC84F0EE7FDFA334148E64D",
+            "tcId": 326
+          }
+        ],
+        "tgId": 22
+      },
+      {
+        "aadLen": 320,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 0,
+        "tagLen": 64,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "F8B2E1D902D383D5006EC0F6E3CEDBBD9D64F520BE4B117611E14594C38B32F0117336F84FE7FE98",
+            "ct": "",
+            "iv": "6FD04E7B3823CD85967087E7",
+            "key": "9116052FAB31C0006CF3A64FEAF81AB0",
+            "tag": "FA571B71A9C9F808",
+            "tcId": 341
+          }
+        ],
+        "tgId": 23
+      },
+      {
+        "aadLen": 112,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 16,
+        "tagLen": 112,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "7EA504CE82AA7C74E46FA4EE13EB",
+            "ct": "630E",
+            "iv": "9617F5F8387021A36FC64CEB",
+            "key": "C2BC1C44384D90D3BAC9CAC7D108C484",
+            "tag": "E02001D3421BC702ADA8AA88617F",
+            "tcId": 356
+          }
+        ],
+        "tgId": 24
+      },
+      {
+        "aadLen": 320,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 128,
+        "tagLen": 120,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "F61E1BA9BF31F8F5ADD6B607FB6288800C0232EFF60C79FD94A74B4A8DA80470CBE5E33CAC508D79",
+            "ct": "735413E52E9912A05B6B0ECA6AC42880",
+            "iv": "1699EA71C1DD0E0346AF01D2",
+            "key": "1EE6D2D95AC7F94DAB0E8F974878E509",
+            "tag": "FC094F5B0263EF6A7E194297E7D28C",
+            "tcId": 371
+          }
+        ],
+        "tgId": 25
+      },
+      {
+        "aadLen": 112,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 128,
+        "tagLen": 128,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "6939825277A64D393EB1A5468000",
+            "ct": "328A0DBF76FAF3958B4758E445C0BA25",
+            "iv": "35B2A71C8FAEF92350078062",
+            "key": "CD4722C53D4F973A4DB632904116CFCA",
+            "tag": "297744509ABA70A6DC19AF0929BE9244",
+            "tcId": 386
+          }
+        ],
+        "tgId": 26
+      },
+      {
+        "aadLen": 40,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 16,
+        "tagLen": 96,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "D9C107023E",
+            "ct": "FF32",
+            "iv": "FAECB17B54334042BF0A9EE3",
+            "key": "CA05D0EA85946FE96163C6508F4AF77A",
+            "tag": "E02803CE3E072E0E50F285DE",
+            "tcId": 401
+          }
+        ],
+        "tgId": 27
+      },
+      {
+        "aadLen": 0,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 128,
+        "payloadLen": 0,
+        "tagLen": 32,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "ct": "",
+            "iv": "26FAE9868CAA50B94C817FE9",
+            "key": "248721D04457F9EBC435BFC4ADE3376C",
+            "tag": "57E82746",
+            "tcId": 416
+          }
+        ],
+        "tgId": 28
+      },
+      {
+        "aadLen": 112,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 168,
+        "tagLen": 96,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "D1BFAD2A711564D5B69C0466FE90",
+            "ct": "3DF6689EA1A15C690349E70DC27D66327047F51D73",
+            "iv": "C14463B6B2762FD3306020F3",
+            "key": "CF8CF2FD96E380AE7714A3C6E84A26BB52E831DFA911F174",
+            "tag": "D8AF5DE08B6DBBC255728EBA",
+            "tcId": 431
+          }
+        ],
+        "tgId": 29
+      },
+      {
+        "aadLen": 320,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 256,
+        "tagLen": 120,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "EFD0A9CE4990990FD1C35D2749300BA1C50CBD81958D9D9A83E9FB2D1AF546F43E4D6DD6EDD1B115",
+            "ct": "198C17C675ACFB2894D092F8A105C5E4E0D51F6E24F3EBB0AE3F09B11018D203",
+            "iv": "4BF7E11DE1A999260747AA8E",
+            "key": "2694525DA796A0FAA6E507B2E13FD1E25712E96F9BE315E8",
+            "tag": "3C5292CA41D0786544BBB0A615798A",
+            "tcId": 446
+          }
+        ],
+        "tgId": 30
+      },
+      {
+        "aadLen": 0,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 128,
+        "tagLen": 128,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "ct": "8F97055D7D37FE91A4F42DC33318CAA1",
+            "iv": "DDA6F1CBC9C99E51C9BC2FF5",
+            "key": "96E05B590C1824E75F9B69FE0F904264B94257C3B88D7BDB",
+            "tag": "8B89DFA88990B8A7A2E8907BE1AF56C8",
+            "tcId": 461
+          }
+        ],
+        "tgId": 31
+      },
+      {
+        "aadLen": 40,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 16,
+        "tagLen": 112,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "21414B8E9F",
+            "ct": "32FA",
+            "iv": "FD6D4A1C57C7B96294594B35",
+            "key": "920FF7BE45996192D57AC68F2500E5E7899D32AADD91325F",
+            "tag": "93AF501F04C10ABE926059933900",
+            "tcId": 476
+          }
+        ],
+        "tgId": 32
+      },
+      {
+        "aadLen": 320,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 168,
+        "tagLen": 64,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "67FBAFB2745FB11644E6908CBC25AACA6B4161035F6403EB05C08F7CC78145BCB7044C9231DD0FA6",
+            "ct": "EE4BDD8DBBC1BC63F659D01E1D6285A4ED0D97F9E8",
+            "iv": "74C9DDF8D98DC2508D089B11",
+            "key": "7668DCB48DE190840625DF22DE69197F7638D20752D76B3B",
+            "tag": "89D3AA5334465DBD",
+            "tcId": 491
+          }
+        ],
+        "tgId": 33
+      },
+      {
+        "aadLen": 0,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 0,
+        "tagLen": 32,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "ct": "",
+            "iv": "3D36A1A644729972EB8EB876",
+            "key": "C0841D3D09A8BF740341FD288B4E43A45A808B26A7FA0CFA",
+            "tag": "5373B312",
+            "tcId": 506
+          }
+        ],
+        "tgId": 34
+      },
+      {
+        "aadLen": 112,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 192,
+        "payloadLen": 256,
+        "tagLen": 104,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "F11D9032CC16F4A8CBB2E9E05A32",
+            "ct": "50202BBD397184C6A7EA9DC2A0B4A183E8FAD3F97FDCA4CCED20C7ED8ABD4694",
+            "iv": "EE86102056D30BFF4B9B95DB",
+            "key": "62A6EF98927E868CBE243224085EA0F08286B1905A4DD6A5",
+            "tag": "25525314F9EFD9862AE68E89A4",
+            "tcId": 521
+          }
+        ],
+        "tgId": 35
+      },
+      {
+        "aadLen": 40,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 128,
+        "tagLen": 96,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "7014F654E5",
+            "ct": "8D08A0DD472EFE88335BE7E77D2D08CE",
+            "iv": "4C5C6DEC4AFF6AC02A3FA12E",
+            "key": "23A4837BF86C7F0326AA9101934B239AC7B43AD3928A91148BE65AD6CB0299C7",
+            "tag": "C48CB42A447AC87658A24DB3",
+            "tcId": 536
+          }
+        ],
+        "tgId": 36
+      },
+      {
+        "aadLen": 40,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 256,
+        "tagLen": 104,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "4B40E1716B",
+            "ct": "42A89D709B6B9B9DA5746685BFFCE59C1E214DD89ADF22A0EDFD8B6078D4202B",
+            "iv": "74A4BF4949E9BBF0B9E6CE3D",
+            "key": "906BB78F7F2E8D8370813E7982B8FBC2618977F50D14C0B8960ADC4A415FC5AF",
+            "tag": "E84E81835E2775F2930F9A4773",
+            "tcId": 551
+          }
+        ],
+        "tgId": 37
+      },
+      {
+        "aadLen": 0,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 0,
+        "tagLen": 64,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "",
+            "ct": "",
+            "iv": "133F8CADDF292B5DEE705098",
+            "key": "55C6DAF9BFEAA0D93D1FBA03979FB8DA49D93439688B65F1D4B8C8AD4C1A5497",
+            "tag": "37A8E7E7556BA7E2",
+            "tcId": 566
+          }
+        ],
+        "tgId": 38
+      },
+      {
+        "aadLen": 320,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 168,
+        "tagLen": 112,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "ABA27D93445B3AC046A3B8D7050FB44916680D8C7C84DB8EA670F7AA0C722BEFE305456A6B85AC77",
+            "ct": "A9580BBC846866103D292C57060B5071B85FD4A481",
+            "iv": "793385CB767FC7F3CE2C81C5",
+            "key": "E14B58F10DE818F0D2B3F4CC6E2E57CC038275972EEFD7D576E977BF61CA5E00",
+            "tag": "8DA670C6DDB27B9AF9F6D465B96F",
+            "tcId": 581
+          }
+        ],
+        "tgId": 39
+      },
+      {
+        "aadLen": 112,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 16,
+        "tagLen": 128,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "AEA97EBB64398F1229CF9485A71C",
+            "ct": "361D",
+            "iv": "0F94ED2C1FC9814A8FD938E2",
+            "key": "8B4FD7C6C41F590FEE7D89DA5997C905DBA1B10BC52A5A61F5F11A1DFF9C2708",
+            "tag": "EE4722BEC97A25E45028148C4640C23F",
+            "tcId": 596
+          }
+        ],
+        "tgId": 40
+      },
+      {
+        "aadLen": 112,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 16,
+        "tagLen": 120,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "525B3402B73A634A989718115D13",
+            "ct": "25F8",
+            "iv": "A25AA18B1EA6C8694B203A8A",
+            "key": "8CDCB1157C82B1745BEDC7852B1A6DD7AC1BDDCC52F15857EFDD4C6374AD48FB",
+            "tag": "032C36EFFDD93FE6D5372101FB2C23",
+            "tcId": 611
+          }
+        ],
+        "tgId": 41
+      },
+      {
+        "aadLen": 40,
+        "direction": "decrypt",
+        "ivGen": "external",
+        "ivLen": 96,
+        "keyLen": 256,
+        "payloadLen": 168,
+        "tagLen": 32,
+        "testType": "AFT",
+        "tests": [
+          {
+            "aad": "EBF03E5670",
+            "ct": "2711036F4A5BB26604E3B951CF16C76F55C07A902A",
+            "iv": "8B3F82E719F89EA8848ECB41",
+            "key": "7586CCF030C06AE079773D21E7728BD120326FF8D50ECF6CE901EE9411DA1DD6",
+            "tag": "829DA153",
+            "tcId": 626
+          }
+        ],
+        "tgId": 42
+      }
+    ],
+    "vsId": 413621
+  }
+]
